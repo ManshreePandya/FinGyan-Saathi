@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- Variables --- */
+        :root {
+            --primary-orange: #ff8c42;
+            --dark-blue: #2c3e50;
+            --text-color: #333;
+            --light-text-color: #666;
+            --background-grey: #f8f8f8;
+            --white: #fff;
+            --border-color: #eee;
+            --font-family: 'Roboto', sans-serif;
+        }
+
+        /* --- Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--background-grey);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-orange);
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #e57a31;
+        }
+
+        /* --- Buttons --- */
+        .primary-button {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .primary-button:hover {
+            background-color: #e57a31;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            background-color: var(--primary-orange);
+            border-radius: 4px;
+            padding: 2px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            margin-left: 25px;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a.active-nav {
+            color: var(--primary-orange);
+        }
+
+        nav a:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Hamburger Menu Icon (Desktop hidden) */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--text-color);
+        }
+
+        /* --- Sections Common --- */
+        section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: var(--dark-blue);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+
+        .section-description {
+            color: var(--light-text-color);
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- About Hero Section --- */
+        .about-hero-section {
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 5%;
+            text-align: left;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-hero-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .about-hero-content p {
+            font-size: 18px;
+            color: var(--light-text-color);
+            margin-bottom: 30px;
+        }
+
+        .about-hero-image {
+            flex: 1;
+            min-width: 400px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .about-hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Core Values Section --- */
+        .core-values-section {
+            background-color: var(--background-grey);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .value-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .value-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            padding: 10px;
+            filter: invert(1);
+        }
+
+        .value-item h3 {
+            font-size: 20px;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .value-item p {
+            font-size: 15px;
+            color: var(--light-text-color);
+        }
+
+        /* --- Impact Section --- */
+        .impact-section {
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 5%;
+            text-align: left;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .impact-image {
+            flex: 1;
+            min-width: 400px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .impact-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .impact-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .impact-content p {
+            font-size: 18px;
+            color: var(--light-text-color);
+            margin-bottom: 30px;
+        }
+
+        /* --- Team Section --- */
+        .team-section {
+            background-color: var(--background-grey);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-orange);
+        }
+
+        .team-member-card h4 {
+            font-size: 20px;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .team-title {
+            font-size: 14px;
+            color: var(--primary-orange);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .team-bio {
+            font-size: 15px;
+            color: var(--light-text-color);
+            margin-bottom: 20px;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-social a {
+            color: var(--light-text-color);
+            font-size: 18px;
+            margin: 0 8px;
+        }
+
+        .team-social a:hover {
+            color: var(--dark-blue);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--white);
+            padding: 60px 5% 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--light-text-color);
+            font-size: 14px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left {
+            flex: 2;
+            min-width: 250px;
+        }
+
+        .footer-left .logo-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .footer-left .logo-text {
+            font-size: 20px;
+        }
+
+        .footer-motto {
+            margin-top: 15px;
+            margin-bottom: 20px;
+            max-width: 250px;
+            color: var(--text-color);
+        }
+
+        .footer-left .social-icons a {
+            color: var(--light-text-color);
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-column h3 {
+            color: var(--dark-blue);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul a {
+            color: var(--light-text-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- "Made with Vislly" --- */
+        .made-with {
+            background-color: var(--white);
+            padding: 10px 5%;
+            text-align: left;
+            font-size: 12px;
+            color: var(--light-text-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .vislly-link-footer {
+            display: inline-flex;
+            align-items: center;
+            color: #5527a0;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+
+        .vislly-link-footer::before {
+            content: "V";
+            display: inline-block;
+            color: var(--white);
+            background-color: #5527a0;
+            font-weight: bold;
+            font-size: 10px;
+            line-height: 15px;
+            width: 15px;
+            height: 15px;
+            text-align: center;
+            border-radius: 3px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        /* --- Responsive Adjustments (Mobile first for menu) --- */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                padding-bottom: 10px;
+                height: auto;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                width: 100%;
+                display: none; /* Hidden by default on mobile */
+                flex-direction: column;
+                margin-top: 15px;
+                background-color: var(--white);
+            }
+
+            nav.active {
+                display: flex; /* Shown when JS adds 'active' class */
+            }
+
+            nav a {
+                margin: 0;
+                padding: 10px 0;
+                border-top: 1px solid var(--border-color);
+                text-align: center;
+            }
+
+            /* General mobile layout adjustments */
+            .about-hero-section, .impact-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-hero-image, .impact-image {
+                min-width: unset;
+                max-width: 100%;
+                margin-top: 30px;
+            }
+
+            .impact-section .impact-content {
+                order: -1;
+            }
+            
+            h1 {
+                font-size: 34px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .values-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-left {
+                min-width: unset;
+            }
+
+            .footer-column {
+                min-width: unset;
+                width: 100%;
+                margin-top: 20px;
+                text-align: left;
+            }
+            
+            .primary-button {
+                width: 100%;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            nav {
+                display: flex !important; /* Always visible on desktop */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+            <span class="logo-text">Fingyaan Saathi</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="mainNav">
+            <a href="#">Home</a>
+            <a href="#" class="active-nav">About</a>
+            <a href="#">Courses</a>
+            <a href="#">Community</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-hero-section">
+            <div class="about-hero-content">
+                <h1>Empowering Women Through Digital Literacy</h1>
+                <p>At Fingyaan Saathi, we believe in unlocking every woman's potential by equipping them with essential digital skills. Our mission is to foster a community where women can confidently navigate the digital world, pursue new opportunities, and build a brighter future for themselves and others.</p>
+                <button class="primary-button">Join Our Community</button>
+            </div>
+            <div class="about-hero-image">
+                <img src="https://via.placeholder.com/700x400?text=Women+Collaborating+on+Laptops" alt="Women collaborating on laptops">
+            </div>
+        </section>
+
+        <section class="core-values-section">
+            <h2>Our Core Values</h2>
+            <p class="section-description">The principles that drive our mission to make a lasting difference.</p>
+
+            <div class="values-grid">
+                <div class="value-item">
+                    <img src="https://via.placeholder.com/50" alt="Empowerment Icon">
+                    <h3>Empowerment</h3>
+                    <p>Fostering confidence and self-reliance in every woman through accessible digital education.</p>
+                </div>
+                <div class="value-item">
+                    <img src="https://via.placeholder.com/50" alt="Inclusivity Icon">
+                    <h3>Inclusivity</h3>
+                    <p>Creating a welcoming and supportive learning environment for women of all backgrounds, ages, and goals.</p>
+                </div>
+                <div class="value-item">
+                    <img src="https://via.placeholder.com/50" alt="Community Icon">
+                    <h3>Community</h3>
+                    <p>Building a vibrant network where women can connect, collaborate, and grow together.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="impact-section">
+            <div class="impact-image">
+                <img src="https://via.placeholder.com/600x400?text=Woman+Working+on+Laptop" alt="Woman working on laptop">
+            </div>
+            <div class="impact-content">
+                <h2>Making a Real Impact</h2>
+                <p>Our programs are designed to equip women with practical, job-ready digital skills, from securing new jobs to starting their own digital ventures. We support every step of their journey, empowering them to reach new heights.</p>
+                <button class="primary-button">Read Success Stories</button>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>Meet Our Dedicated Team</h2>
+            <p class="section-description">The passionate individuals driving our mission to empower women through digital literacy.</p>
+
+            <div class="team-grid">
+                <div class="team-member-card">
+                    <img src="https://via.placeholder.com/150x150?text=Dr.A" alt="Dr. Aishn Khan" class="team-avatar">
+                    <h4>Dr. Aishn Khan</h4>
+                    <p class="team-title">Founder & CEO</p>
+                    <p class="team-bio">Visionary leader passionate about women's empowerment through education.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="https://via.placeholder.com/150x150?text=Ms.P" alt="Ms. Priya Sharma" class="team-avatar">
+                    <h4>Ms. Priya Sharma</h4>
+                    <p class="team-title">Head of Education</p>
+                    <p class="team-bio">Expert in curriculum design and innovative teaching methods.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="https://via.placeholder.com/150x150?text=Mr.D" alt="Mr. David Lee" class="team-avatar">
+                    <h4>Mr. David Lee</h4>
+                    <p class="team-title">Lead Technology Officer</p>
+                    <p class="team-bio">Ensuring seamless digital access and learning platforms.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="team-member-card">
+                    <img src="https://via.placeholder.com/150x150?text=Smt.K" alt="Smt. Kavitha Devi" class="team-avatar">
+                    <h4>Smt. Kavitha Devi</h4>
+                    <p class="team-title">Community Outreach Manager</p>
+                    <p class="team-bio">Building strong partnerships and community engagement.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-left">
+                <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+                <span class="logo-text">Fingyaan Saathi</span>
+                <p class="footer-motto">Empowering women through digital literacy.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Digital Tools</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Fingyaan Saathi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="made-with">
+        Made with <a href="#" class="vislly-link-footer">Vislly</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+
+            // Toggle the 'active' class on the navigation menu when the button is clicked
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
