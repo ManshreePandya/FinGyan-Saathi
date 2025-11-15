@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- Variables --- */
+        :root {
+            --primary-orange: #ff8c42;
+            --dark-blue: #2c3e50;
+            --text-color: #333;
+            --light-text-color: #666;
+            --background-grey: #f8f8f8;
+            --white: #fff;
+            --border-color: #eee;
+            --font-family: 'Roboto', sans-serif;
+            --secondary-blue: #4a90e2; /* For study group icon backgrounds */
+        }
+
+        /* --- Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-orange);
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #e57a31;
+        }
+
+        /* --- Buttons --- */
+        .primary-button {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .primary-button:hover {
+            background-color: #e57a31;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            background-color: var(--primary-orange); /* Placeholder for logo */
+            border-radius: 4px;
+            padding: 2px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        nav a {
+            color: var(--light-text-color);
+            margin-left: 25px;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a.active-nav {
+            color: var(--primary-orange);
+        }
+
+        nav a:hover {
+            color: var(--primary-orange);
+        }
+
+        /* Hamburger Menu Icon (Desktop hidden) */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--text-color);
+        }
+
+        /* --- Sections Common --- */
+        section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--dark-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .section-description {
+            color: var(--light-text-color);
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Community Hero Section --- */
+        .community-hero-section {
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 5%;
+            text-align: left;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .community-hero-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .community-hero-content h1 {
+            font-size: 40px;
+            line-height: 1.2;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .community-hero-content p {
+            font-size: 18px;
+            color: var(--light-text-color);
+            margin-bottom: 30px;
+        }
+
+        .community-hero-image {
+            flex: 1;
+            min-width: 400px;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .community-hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Discussion Forums Section --- */
+        .discussion-section {
+            background-color: var(--background-grey);
+            text-align: left;
+        }
+
+        .discussion-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .forum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .discussion-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .discussion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-orange);
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .user-info strong {
+            display: block;
+            font-size: 16px;
+            color: var(--dark-blue);
+        }
+
+        .user-info span {
+            font-size: 12px;
+            color: var(--light-text-color);
+        }
+
+        .discussion-card h4 {
+            font-size: 18px;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .discussion-card p {
+            font-size: 14px;
+            color: var(--light-text-color);
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--light-text-color);
+        }
+
+        .card-footer span i {
+            margin-right: 5px;
+            color: var(--primary-orange);
+        }
+
+        /* --- Study Groups Section --- */
+        .study-groups-section {
+            background-color: var(--white);
+            padding-bottom: 0; /* Align with image */
+        }
+
+        .study-groups-section h2 {
+            text-align: center;
+        }
+
+        .study-groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .group-card {
+            background-color: var(--background-grey);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .group-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary-blue); /* Different color for variety */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .group-icon i {
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .group-card h4 {
+            font-size: 20px;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .group-card p {
+            font-size: 14px;
+            color: var(--light-text-color);
+            margin-bottom: 20px;
+        }
+
+        .group-card .view-group {
+            color: var(--dark-blue);
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            padding: 8px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+
+        .group-card .view-group:hover {
+            background-color: var(--border-color);
+        }
+
+        .group-card .members-count {
+            display: block;
+            font-size: 14px;
+            color: var(--light-text-color);
+            margin-top: 10px;
+        }
+
+        /* --- Success Stories Section (Visually similar to team section on about page) --- */
+        .success-stories-section {
+            background-color: var(--white);
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .story-card .story-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .story-card .story-overlay-text {
+            position: relative;
+            margin-top: -80px;
+            color: var(--white);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+            padding: 0 20px 20px;
+        }
+
+        .story-card .story-overlay-text h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .story-card .story-overlay-text p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--white);
+            padding: 60px 5% 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--light-text-color);
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-section:first-child {
+            flex: 1.5;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            color: var(--dark-blue);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul a {
+            color: var(--light-text-color);
+        }
+
+        .footer-text {
+            margin-bottom: 20px;
+        }
+
+        .footer-social-icons a {
+            color: var(--light-text-color);
+            font-size: 20px;
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .footer-social-icons a:hover {
+            color: var(--primary-orange);
+        }
+
+        .copyright-section {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .copyright-section p {
+            margin: 5px 0;
+        }
+
+        /* --- "Made with Vislly" --- */
+        .made-with-footer {
+            background-color: var(--white);
+            padding: 10px 5%;
+            text-align: left;
+            font-size: 12px;
+            color: var(--light-text-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .vislly-link-footer {
+            display: inline-flex;
+            align-items: center;
+            color: #5527a0;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+
+        .vislly-link-footer::before {
+            content: "V";
+            display: inline-block;
+            color: var(--white);
+            background-color: #5527a0;
+            font-weight: bold;
+            font-size: 10px;
+            line-height: 15px;
+            width: 15px;
+            height: 15px;
+            text-align: center;
+            border-radius: 3px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .community-hero-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .community-hero-content {
+                order: 1;
+                max-width: 100%;
+            }
+
+            .community-hero-image {
+                order: 0;
+                min-width: unset;
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                padding-bottom: 10px;
+                height: auto;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                margin-top: 15px;
+                background-color: var(--white);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                margin: 0;
+                padding: 10px 0;
+                border-top: 1px solid var(--border-color);
+                text-align: center;
+            }
+            
+            .community-hero-content h1 {
+                font-size: 34px;
+            }
+
+            .discussion-card, .group-card, .story-card {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-section {
+                min-width: unset;
+                width: 100%;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 769px) {
+            nav {
+                display: flex !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+            <span class="logo-text">Fingyaan Saathi</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="mainNav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Courses</a>
+            <a href="#" class="active-nav">Community</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="community-hero-section">
+            <div class="community-hero-content">
+                <h1>Connect, Learn, Grow Together</h1>
+                <p>Join our vibrant community of learners to share knowledge, collaborate on projects, and achieve your educational goals.</p>
+                <button class="primary-button">Join the Community</button>
+            </div>
+            <div class="community-hero-image">
+                <img src="https://via.placeholder.com/600x400?text=Group+of+women+collaborating+at+a+table" alt="Group of women collaborating at a table">
+            </div>
+        </section>
+
+        <section class="discussion-section">
+            <h2>Discussion Forums</h2>
+            <p class="section-description">Discover a range of courses designed to build your digital confidence and open up new possibilities.</p>
+            
+            <div class="forum-grid">
+                <div class="discussion-card">
+                    <div class="card-header">
+                        <div class="user-avatar">AR</div>
+                        <div class="user-info">
+                            <strong>Aisha Rahman</strong>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                    <h4>Tips for mastering spreadsheet basics</h4>
+                    <p>I'm struggling to create pivots and filter large datasets. Any tips or resources for beginners?</p>
+                    <div class="card-footer">
+                        <span><i class="fas fa-eye"></i> 1K</span>
+                        <span><i class="fas fa-comment"></i> 120</span>
+                    </div>
+                </div>
+
+                <div class="discussion-card">
+                    <div class="card-header">
+                        <div class="user-avatar" style="background-color: var(--secondary-blue);">PS</div>
+                        <div class="user-info">
+                            <strong>Priya Sharma</strong>
+                            <span>3 hours ago</span>
+                        </div>
+                    </div>
+                    <h4>Best free online coding platforms for beginners?</h4>
+                    <p>I want to learn coding. What are the best free resources available to start as a complete beginner?</p>
+                    <div class="card-footer">
+                        <span><i class="fas fa-eye"></i> 1K</span>
+                        <span><i class="fas fa-comment"></i> 12</span>
+                    </div>
+                </div>
+
+                <div class="discussion-card">
+                    <div class="card-header">
+                        <div class="user-avatar">FA</div>
+                        <div class="user-info">
+                            <strong>Fatima Al-Fassi</strong>
+                            <span>6 hours ago</span>
+                        </div>
+                    </div>
+                    <h4>How to create an effective online portfolio?</h4>
+                    <p>I've just finished my digital marketing course and need advice on where to host a portfolio. What are the best tools?</p>
+                    <div class="card-footer">
+                        <span><i class="fas fa-eye"></i> 1K</span>
+                        <span><i class="fas fa-comment"></i> 90</span>
+                    </div>
+                </div>
+
+                <div class="discussion-card">
+                    <div class="card-header">
+                        <div class="user-avatar" style="background-color: #5527a0;">ML</div>
+                        <div class="user-info">
+                            <strong>Mei Lin</strong>
+                            <span>1 day ago</span>
+                        </div>
+                    </div>
+                    <h4>Managing digital distractions while learning</h4>
+                    <p>My concentration keeps breaking when I study online. Any strategies or tools you recommend?</p>
+                    <div class="card-footer">
+                        <span><i class="fas fa-eye"></i> 2K</span>
+                        <span><i class="fas fa-comment"></i> 350</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="study-groups-section">
+            <h2>Study Groups</h2>
+            
+            <div class="study-groups-grid">
+                <div class="group-card">
+                    <div class="group-icon" style="background-color: var(--primary-orange);">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h4>Basic Graphic Design Club</h4>
+                    <p>Learn the fundamentals of graphic design, color theory, and software skills together through weekly projects.</p>
+                    <span class="members-count"><i class="fas fa-users"></i> 45 Members</span>
+                    <a href="#" class="view-group">View Group</a>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h4>Intro to Social Media Marketing</h4>
+                    <p>Explore strategies for effective social media promotion and content creation for business success.</p>
+                    <span class="members-count"><i class="fas fa-users"></i> 32 Members</span>
+                    <a href="#" class="view-group">View Group</a>
+                </div>
+
+                <div class="group-card">
+                    <div class="group-icon" style="background-color: var(--dark-blue);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Website Building with No Code</h4>
+                    <p>Dive into building professional websites using popular no-code platforms. No prior development or coding experience required.</p>
+                    <span class="members-count"><i class="fas fa-users"></i> 28 Members</span>
+                    <a href="#" class="view-group">View Group</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="success-stories-section">
+            <h2>Success Stories</h2>
+            
+            <div class="stories-grid">
+                <div class="story-card">
+                    <img src="https://via.placeholder.com/400x250?text=Woman+in+office" alt="Professional Woman Freelancing" class="story-image">
+                    <div class="story-overlay-text">
+                        <h4>Fatima Rahman</h4>
+                        <p>Freelance Digital Marketer</p>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <img src="https://via.placeholder.com/400x250?text=Woman+Studying" alt="Student improving her skills" class="story-image">
+                    <div class="story-overlay-text">
+                        <h4>Sushma Devi</h4>
+                        <p>Improved Customer Skills</p>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <img src="https://via.placeholder.com/400x250?text=Women+working+together" alt="Group of women designers" class="story-image">
+                    <div class="story-overlay-text">
+                        <h4>Aisha and Partners</h4>
+                        <p>Launched My Web Design Studio</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Fingyaan Saathi</h3>
+                <p class="footer-text">Empowering women through digital literacy.</p>
+                <div class="footer-social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Digital Tools</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright-section">
+            <p>&copy; 2025 Fingyaan Saathi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="made-with-footer">
+        Made with <a href="#" class="vislly-link-footer">Vislly</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // JavaScript for Hamburger Menu Toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                });
+            }
+
+            // You can add more JavaScript here for interactive features like:
+            // - Loading more discussion forum posts.
+            // - Simple carousel/slider for success stories (requires a library or more complex code).
+            // - Opening a modal when a study group is clicked.
+
+            // Example of a simple click handler for discussion cards (for future use/expansion):
+            const discussionCards = document.querySelectorAll('.discussion-card');
+            discussionCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    console.log('Navigating to discussion thread for:', this.querySelector('h4').textContent);
+                    // alert('This would navigate to the full discussion thread.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
