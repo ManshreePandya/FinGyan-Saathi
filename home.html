@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* --- Variables --- */
+        :root {
+            --primary-orange: #ff8c42;
+            --dark-blue: #2c3e50;
+            --text-color: #333;
+            --light-text-color: #666;
+            --background-grey: #f8f8f8;
+            --white: #fff;
+            --border-color: #eee;
+            --font-family: 'Roboto', sans-serif;
+        }
+
+        /* --- Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--background-grey);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-orange);
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #e57a31;
+        }
+
+        /* --- Buttons --- */
+        .primary-button, .cta-button {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .primary-button:hover, .cta-button:hover {
+            background-color: #e57a31;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            margin-left: 15px;
+        }
+
+        .secondary-button:hover {
+            background-color: var(--border-color);
+            color: var(--dark-blue);
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            /* Placeholder style for the logo */
+            background-color: var(--primary-orange);
+            border-radius: 4px;
+            padding: 2px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-color);
+            margin-right: 5px;
+        }
+
+        .logo-slogan {
+            font-size: 14px;
+            color: var(--light-text-color);
+        }
+
+        header nav a {
+            color: var(--light-text-color);
+            margin-left: 25px;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        header nav a:hover {
+            color: var(--primary-orange);
+        }
+
+        /* --- Sections Common --- */
+        section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: var(--dark-blue);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+
+        .section-description {
+            color: var(--light-text-color);
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 5%;
+            text-align: left;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--light-text-color);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 400px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Pathways Section --- */
+        .pathways-section {
+            background-color: var(--background-grey);
+        }
+
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pathway-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pathway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .pathway-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            /* Placeholder style for the icons */
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            padding: 10px;
+            filter: invert(1);
+        }
+
+        .pathway-card h3 {
+            font-size: 20px;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .pathway-card p {
+            font-size: 15px;
+            color: var(--light-text-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background-color: var(--primary-orange);
+            color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background-color: var(--white);
+            color: var(--primary-orange);
+            border: none;
+            padding: 15px 35px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 700;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: #f0f0f0;
+            color: #e57a31;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            background-color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .testimonial-card {
+            background-color: var(--background-grey);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--primary-orange);
+        }
+
+        .testimonial-info h4 {
+            font-size: 18px;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-info p {
+            font-size: 14px;
+            color: var(--light-text-color);
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--white);
+            padding: 60px 5% 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--light-text-color);
+            font-size: 14px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-left {
+            flex: 2;
+            min-width: 250px;
+        }
+
+        .footer-left .logo-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .footer-left .logo-text, .footer-left .logo-slogan {
+            font-size: 20px;
+        }
+
+        .footer-motto {
+            margin-top: 15px;
+            margin-bottom: 20px;
+            max-width: 250px;
+            color: var(--text-color);
+        }
+
+        .footer-left .social-icons a {
+            color: var(--light-text-color);
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-column h3 {
+            color: var(--dark-blue);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul a {
+            color: var(--light-text-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- "Made with Vislly" --- */
+        .made-with {
+            background-color: var(--white);
+            padding: 10px 5%;
+            text-align: left;
+            font-size: 12px;
+            color: var(--light-text-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .vislly-link-footer {
+            display: inline-flex;
+            align-items: center;
+            color: #5527a0; /* Purple color for Vislly */
+            font-weight: 500;
+            margin-left: 5px;
+        }
+
+        .vislly-link-footer::before {
+            content: "V";
+            display: inline-block;
+            color: var(--white);
+            background-color: #5527a0;
+            font-weight: bold;
+            font-size: 10px;
+            line-height: 15px;
+            width: 15px;
+            height: 15px;
+            text-align: center;
+            border-radius: 3px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 1024px) {
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-image {
+                min-width: unset;
+                max-width: 100%;
+                margin-top: 30px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-bottom: 10px;
+                height: auto;
+            }
+
+            header nav {
+                margin-top: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+
+            header nav a {
+                margin: 0 10px 10px 10px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .section-description {
+                font-size: 16px;
+            }
+
+            .pathways-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-left {
+                min-width: unset;
+            }
+
+            .footer-column {
+                min-width: unset;
+                width: 100%;
+                margin-top: 20px;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .secondary-button {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+            <span class="logo-text">Fingyaan Saathi</span>
+            <span class="logo-slogan">Fingyaan Saathi</span>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Courses</a>
+            <a href="#">Community</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Empower Your Future: Digital Literacy for Women</h1>
+                <p>Fingyaan Saathi is dedicated to equipping women with essential digital skills, opening doors to new opportunities in a supportive and engaging environment.</p>
+                <div class="hero-buttons">
+                    <button class="primary-button">Get Started</button>
+                    <button class="secondary-button">Learn More About Us</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/500x300?text=Women+in+Digital+Training" alt="Women in digital training session">
+            </div>
+        </section>
+
+        <section class="pathways-section">
+            <h2>Our Digital Literacy Pathways</h2>
+            <p class="section-description">Discover a range of courses designed to build your digital confidence and open up new possibilities.</p>
+
+            <div class="pathways-grid">
+                <div class="pathway-card">
+                    <img src="https://via.placeholder.com/40" alt="Essential Digital Skills Icon">
+                    <h3>Essential Digital Skills</h3>
+                    <p>Master the basics from computer operation to internet navigation. These foundational skills are crucial for your digital journey.</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <div class="pathway-card">
+                    <img src="https://via.placeholder.com/40" alt="Mobile Literacy Icon">
+                    <h3>Mobile Literacy</h3>
+                    <p>Learn to effectively use smartphones for communication, online services, and accessing vital information. Expand your world.</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <div class="pathway-card">
+                    <img src="https://via.placeholder.com/40" alt="Online Communication Icon">
+                    <h3>Online Communication</h3>
+                    <p>Develop strong communication skills for professional and personal use, including email, social media, and virtual meetings.</p>
+                    <a href="#">Learn More</a>
+                </div>
+                <div class="pathway-card">
+                    <img src="https://via.placeholder.com/40" alt="Creative Tools Icon">
+                    <h3>Creative Tools</h3>
+                    <p>Explore introductory graphic design, video editing, and content creation tools to bring your unique ideas to life.</p>
+                    <a href="#">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Transform Your Digital Journey?</h2>
+            <p>Join Fingyaan Saathi today and take the first step towards a future filled with confidence, connection, and endless possibilities.</p>
+            <button class="cta-button">Start Your Journey Now</button>
+        </section>
+
+        <section class="testimonials-section">
+            <h2>Voices of Empowerment</h2>
+            <p class="section-description">Hear how Fingyaan Saathi has positively impacted the lives of women like you.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/50x50?text=A" alt="Aisha Rahman" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Aisha Rahman</h4>
+                            <p>New Entrepreneur</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Before Fingyaan Saathi, I often felt lost in the digital world. Their practical courses gave me the confidence to start my small business online, and now my sales are booming. The classes are easy to understand and the community is so supportive!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/50x50?text=P" alt="Priya Sharma" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Community Leader</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Fingyaan Saathi truly helped me embrace the impact of digital literacy. Fingyaan Saathi's mobile literacy skills that empower women to confidently use smart devices for their daily needs."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/50x50?text=F" alt="Fatima Khan" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Fatima Khan</h4>
+                            <p>Freelance Educator</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"I never thought I could work remotely, but Fingyaan Saathi made it possible. I learned essential online communication, collaboration, and creative tools that helped me launch my freelancing career. It's truly empowering!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://via.placeholder.com/50x50?text=S" alt="Sunita Devi" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Sunita Devi</h4>
+                            <p>Small Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The courses on freelancing and digital tools have been a game-changer for my business. Fingyaan Saathi's practical approach to digital and online communication made me confident. I'm so grateful for their support!"</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-left">
+                <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+                <span class="logo-text">Fingyaan Saathi</span>
+                <span class="logo-slogan">Fingyaan Saathi</span>
+                <p class="footer-motto">Empowering women through digital literacy.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Digital Tools</a></li>
+                    <li><a href="#">Partners</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Fingyaan Saathi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="made-with">
+        Made with <a href="#" class="vislly-link-footer">Vislly</a>
+    </div>
+</body>
+</html>
