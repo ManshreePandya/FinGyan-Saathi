@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +49,8 @@
         }
 
         /* --- Buttons --- */
-        .primary-button, .cta-button {
+        .primary-button,
+        .cta-button {
             background-color: var(--primary-orange);
             color: var(--white);
             padding: 12px 25px;
@@ -60,7 +62,8 @@
             transition: background-color 0.2s;
         }
 
-        .primary-button:hover, .cta-button:hover {
+        .primary-button:hover,
+        .cta-button:hover {
             background-color: #e57a31;
         }
 
@@ -137,7 +140,8 @@
             text-align: center;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             color: var(--dark-blue);
             font-weight: 700;
             margin-bottom: 20px;
@@ -373,7 +377,8 @@
             height: 28px;
         }
 
-        .footer-left .logo-text, .footer-left .logo-slogan {
+        .footer-left .logo-text,
+        .footer-left .logo-slogan {
             font-size: 20px;
         }
 
@@ -435,7 +440,8 @@
         .vislly-link-footer {
             display: inline-flex;
             align-items: center;
-            color: #5527a0; /* Purple color for Vislly */
+            color: #5527a0;
+            /* Purple color for Vislly */
             font-weight: 500;
             margin-left: 5px;
         }
@@ -511,7 +517,8 @@
                 font-size: 16px;
             }
 
-            .pathways-grid, .testimonials-grid {
+            .pathways-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -542,21 +549,131 @@
                 margin-left: 0;
             }
         }
+
+        /* --- Floating Saathi AI Chatbot --- */
+        .saathi-chatbot {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+        }
+
+        .saathi-button {
+            width: 65px;
+            height: 65px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 26px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .saathi-button:hover {
+            transform: scale(1.08);
+        }
+
+        /* Chat Window */
+        .chat-window {
+            width: 320px;
+            height: 420px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: var(--primary-orange);
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+            font-size: 15px;
+        }
+
+        .chat-message {
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 7px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background: #d1f7ff;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background: #ffe6d6;
+            align-self: flex-start;
+        }
+
+        .chat-input-area {
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .chat-input-area button {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-left">
-            <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+
+                <!-- Curved F body -->
+                <path d="M7 4v14c0 2 3 2 3 0" />
+
+                <!-- F horizontal bars -->
+                <path d="M7 4h9" />
+                <path d="M7 10h6" />
+
+                <!-- Empowering dot (like head of figure) -->
+                <circle cx="17" cy="4" r="1.2" />
+            </svg>
+
             <span class="logo-text">Fingyaan Saathi</span>
-            <span class="logo-slogan">Fingyaan Saathi</span>
+
         </div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Courses</a>
-            <a href="#">Community</a>
-            <a href="#">Contact</a>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="comunity.html">Courses</a>
+            <a href="comunity.html">Community</a>
+            <a href="contact.html">Contact</a>
+            <a href="logout.php">Logout</a>
         </nav>
     </header>
 
@@ -564,44 +681,75 @@
         <section class="hero-section">
             <div class="hero-content">
                 <h1>Empower Your Future: Digital Literacy for Women</h1>
-                <p>Fingyaan Saathi is dedicated to equipping women with essential digital skills, opening doors to new opportunities in a supportive and engaging environment.</p>
+                <p>Fingyaan Saathi is dedicated to equipping women with essential digital skills, opening doors to new
+                    opportunities in a supportive and engaging environment.</p>
                 <div class="hero-buttons">
                     <button class="primary-button">Get Started</button>
                     <button class="secondary-button">Learn More About Us</button>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://via.placeholder.com/500x300?text=Women+in+Digital+Training" alt="Women in digital training session">
+                <img src="img/12.jpeg" alt="Women in digital training session">
             </div>
         </section>
 
         <section class="pathways-section">
             <h2>Our Digital Literacy Pathways</h2>
-            <p class="section-description">Discover a range of courses designed to build your digital confidence and open up new possibilities.</p>
+            <p class="section-description">Discover a range of courses designed to build your digital confidence and
+                open up new possibilities.</p>
 
             <div class="pathways-grid">
                 <div class="pathway-card">
-                    <img src="https://via.placeholder.com/40" alt="Essential Digital Skills Icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2.5" y="3.5" width="19" height="12" rx="1.2"></rect>
+                        <path d="M8 18h8"></path>
+                        <path d="M10 9.5l1.7 1.7L15 8.9"></path>
+                    </svg>
+
                     <h3>Essential Digital Skills</h3>
-                    <p>Master the basics from computer operation to internet navigation. These foundational skills are crucial for your digital journey.</p>
+                    <p>Master the basics from computer operation to internet navigation. These foundational skills are
+                        crucial for your digital journey.</p>
                     <a href="#">Learn More</a>
                 </div>
                 <div class="pathway-card">
-                    <img src="https://via.placeholder.com/40" alt="Mobile Literacy Icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="7.2" y="2.8" width="9.6" height="18.4" rx="2"></rect>
+                        <circle cx="12" cy="18.2" r="0.9"></circle>
+                        <path d="M8.5 6.5h7"></path>
+                        <path d="M15.5 9.5c1 1 1 3 0 4.1"></path>
+                    </svg>
+
                     <h3>Mobile Literacy</h3>
-                    <p>Learn to effectively use smartphones for communication, online services, and accessing vital information. Expand your world.</p>
+                    <p>Learn to effectively use smartphones for communication, online services, and accessing vital
+                        information. Expand your world.</p>
                     <a href="#">Learn More</a>
                 </div>
                 <div class="pathway-card">
-                    <img src="https://via.placeholder.com/40" alt="Online Communication Icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H9l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"></path>
+                        <path d="M8 9h8"></path>
+                        <path d="M12 12c0-1.2.9-2 2-2s2 .8 2 2-1 2-2 2h-1"></path>
+                    </svg>
+
                     <h3>Online Communication</h3>
-                    <p>Develop strong communication skills for professional and personal use, including email, social media, and virtual meetings.</p>
+                    <p>Develop strong communication skills for professional and personal use, including email, social
+                        media, and virtual meetings.</p>
                     <a href="#">Learn More</a>
                 </div>
                 <div class="pathway-card">
-                    <img src="https://via.placeholder.com/40" alt="Creative Tools Icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 21l6-6"></path>
+                        <path d="M14.5 5.5l4 4L9 19l-4-4L14.5 5.5z"></path>
+                        <path d="M17 3c1.5 1 2.2 2.8 1.7 4.6a3.5 3.5 0 0 1-2.8 2.8C14.2 11 12.3 10.3 11.3 8.8"></path>
+                    </svg>
+
                     <h3>Creative Tools</h3>
-                    <p>Explore introductory graphic design, video editing, and content creation tools to bring your unique ideas to life.</p>
+                    <p>Explore introductory graphic design, video editing, and content creation tools to bring your
+                        unique ideas to life.</p>
                     <a href="#">Learn More</a>
                 </div>
             </div>
@@ -609,54 +757,64 @@
 
         <section class="cta-section">
             <h2>Ready to Transform Your Digital Journey?</h2>
-            <p>Join Fingyaan Saathi today and take the first step towards a future filled with confidence, connection, and endless possibilities.</p>
+            <p>Join Fingyaan Saathi today and take the first step towards a future filled with confidence, connection,
+                and endless possibilities.</p>
             <button class="cta-button">Start Your Journey Now</button>
         </section>
 
         <section class="testimonials-section">
             <h2>Voices of Empowerment</h2>
-            <p class="section-description">Hear how Fingyaan Saathi has positively impacted the lives of women like you.</p>
+            <p class="section-description">Hear how Fingyaan Saathi has positively impacted the lives of women like you.
+            </p>
 
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="https://via.placeholder.com/50x50?text=A" alt="Aisha Rahman" class="testimonial-avatar">
+                        <img src="img/images (1).jpg" alt="Aisha Rahman" class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Aisha Rahman</h4>
                             <p>New Entrepreneur</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">"Before Fingyaan Saathi, I often felt lost in the digital world. Their practical courses gave me the confidence to start my small business online, and now my sales are booming. The classes are easy to understand and the community is so supportive!"</p>
+                    <p class="testimonial-text">"Before Fingyaan Saathi, I often felt lost in the digital world. Their
+                        practical courses gave me the confidence to start my small business online, and now my sales are
+                        booming. The classes are easy to understand and the community is so supportive!"</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="https://via.placeholder.com/50x50?text=P" alt="Priya Sharma" class="testimonial-avatar">
+                        <img src="img/images.jpg" alt="Priya Sharma" class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Priya Sharma</h4>
                             <p>Community Leader</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">"Fingyaan Saathi truly helped me embrace the impact of digital literacy. Fingyaan Saathi's mobile literacy skills that empower women to confidently use smart devices for their daily needs."</p>
+                    <p class="testimonial-text">"Fingyaan Saathi truly helped me embrace the impact of digital literacy.
+                        Fingyaan Saathi's mobile literacy skills that empower women to confidently use smart devices for
+                        their daily needs."</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="https://via.placeholder.com/50x50?text=F" alt="Fatima Khan" class="testimonial-avatar">
+                        <img src="img/images (3).jpg" alt="Fatima Khan" class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Fatima Khan</h4>
                             <p>Freelance Educator</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">"I never thought I could work remotely, but Fingyaan Saathi made it possible. I learned essential online communication, collaboration, and creative tools that helped me launch my freelancing career. It's truly empowering!"</p>
+                    <p class="testimonial-text">"I never thought I could work remotely, but Fingyaan Saathi made it
+                        possible. I learned essential online communication, collaboration, and creative tools that
+                        helped me launch my freelancing career. It's truly empowering!"</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="https://via.placeholder.com/50x50?text=S" alt="Sunita Devi" class="testimonial-avatar">
+                        <img src="img/images (2).jpg" alt="Sunita Devi" class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Sunita Devi</h4>
                             <p>Small Business Owner</p>
                         </div>
                     </div>
-                    <p class="testimonial-text">"The courses on freelancing and digital tools have been a game-changer for my business. Fingyaan Saathi's practical approach to digital and online communication made me confident. I'm so grateful for their support!"</p>
+                    <p class="testimonial-text">"The courses on freelancing and digital tools have been a game-changer
+                        for my business. Fingyaan Saathi's practical approach to digital and online communication made
+                        me confident. I'm so grateful for their support!"</p>
                 </div>
             </div>
         </section>
@@ -665,9 +823,22 @@
     <footer>
         <div class="footer-top">
             <div class="footer-left">
-                <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                    stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+
+                    <!-- Curved F body -->
+                    <path d="M7 4v14c0 2 3 2 3 0" />
+
+                    <!-- F horizontal bars -->
+                    <path d="M7 4h9" />
+                    <path d="M7 10h6" />
+
+                    <!-- Empowering dot (like head of figure) -->
+                    <circle cx="17" cy="4" r="1.2" />
+                </svg>
+
                 <span class="logo-text">Fingyaan Saathi</span>
-                <span class="logo-slogan">Fingyaan Saathi</span>
+
                 <p class="footer-motto">Empowering women through digital literacy.</p>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -706,9 +877,78 @@
             <p>&copy; 2025 Fingyaan Saathi. All rights reserved.</p>
         </div>
     </footer>
+    <!-- Saathi AI Floating Chatbot -->
+    <div class="saathi-chatbot">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">Saathi AI</div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot-message">Hi! I’m Saathi AI 😊 How can I help you?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
 
-    <div class="made-with">
-        Made with <a href="#" class="vislly-link-footer">Vislly</a>
+        <div class="saathi-button" onclick="toggleChat()">💬</div>
     </div>
+    <script>
+        function toggleChat() {
+            const chat = document.getElementById("chatWindow");
+            chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+        }
+
+        function sendMessage() {
+            const input = document.getElementById("userInput");
+            const chatBody = document.getElementById("chatBody");
+
+            if (input.value.trim() === "") return;
+
+            // Add user message
+            let userMsg = document.createElement("div");
+            userMsg.className = "chat-message user-message";
+            userMsg.innerText = input.value;
+            chatBody.appendChild(userMsg);
+
+            // Generate bot response (demo, no API)
+            const reply = getBotReply(input.value);
+
+            // Add bot message
+            setTimeout(() => {
+                let botMsg = document.createElement("div");
+                botMsg.className = "chat-message bot-message";
+                botMsg.innerText = reply;
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 500);
+
+            input.value = "";
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Simple demo replies
+        function getBotReply(question) {
+            question = question.toLowerCase();
+
+            if (question.includes("course") || question.includes("learn")) {
+                return "We offer Essential Digital Skills, Mobile Literacy, Online Communication, and Creative Tools courses!";
+            }
+            if (question.includes("contact")) {
+                return "You can reach us anytime through the Contact page!";
+            }
+            if (question.includes("hello") || question.includes("hi")) {
+                return "Hello 😊 How can I support you today?";
+            }
+            if (question.includes("women")) {
+                return "We empower women with digital skills to boost confidence and opportunities.";
+            }
+
+            return "Thanks for asking! This is a demo chatbot, but I can still guide you. 😊";
+        }
+    </script>
+
+
+
 </body>
+
 </html>
