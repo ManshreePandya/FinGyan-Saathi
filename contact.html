@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,7 +89,8 @@
             width: 24px;
             height: 24px;
             margin-right: 8px;
-            background-color: var(--primary-orange); /* Placeholder for logo */
+            background-color: var(--primary-orange);
+            /* Placeholder for logo */
             border-radius: 4px;
             padding: 2px;
         }
@@ -154,17 +156,20 @@
             flex-wrap: wrap;
         }
 
-        .contact-form-card, .contact-info-card {
+        .contact-form-card,
+        .contact-info-card {
             background-color: var(--white);
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             flex: 1;
-            min-width: 350px; /* Adjust as needed */
+            min-width: 350px;
+            /* Adjust as needed */
             text-align: left;
         }
 
-        .contact-form-card h3, .contact-info-card h3 {
+        .contact-form-card h3,
+        .contact-info-card h3 {
             font-size: 24px;
             color: var(--dark-blue);
             margin-bottom: 25px;
@@ -193,7 +198,8 @@
             font-size: 16px;
             color: var(--text-color);
             transition: border-color 0.2s;
-            resize: vertical; /* Allow textarea to be resized vertically */
+            resize: vertical;
+            /* Allow textarea to be resized vertically */
         }
 
         .form-group input:focus,
@@ -210,7 +216,8 @@
 
         .form-row .form-group {
             flex: 1;
-            margin-bottom: 0; /* Remove bottom margin if part of row */
+            margin-bottom: 0;
+            /* Remove bottom margin if part of row */
         }
 
         /* Contact Info Card */
@@ -224,7 +231,8 @@
             font-size: 20px;
             color: var(--primary-orange);
             margin-right: 15px;
-            width: 25px; /* Fixed width for icon */
+            width: 25px;
+            /* Fixed width for icon */
             text-align: center;
         }
 
@@ -247,7 +255,8 @@
             margin-top: 30px;
             display: flex;
             gap: 15px;
-            justify-content: flex-start; /* Align to the left */
+            justify-content: flex-start;
+            /* Align to the left */
         }
 
         .connect-social-icons a {
@@ -282,7 +291,8 @@
             min-width: 180px;
         }
 
-        .footer-section:first-child { /* Specific style for the first footer section */
+        .footer-section:first-child {
+            /* Specific style for the first footer section */
             flex: 1.5;
             min-width: 250px;
         }
@@ -386,14 +396,16 @@
 
             nav {
                 width: 100%;
-                display: none; /* Hidden by default on mobile */
+                display: none;
+                /* Hidden by default on mobile */
                 flex-direction: column;
                 margin-top: 15px;
                 background-color: var(--white);
             }
 
             nav.active {
-                display: flex; /* Shown when JS adds 'active' class */
+                display: flex;
+                /* Shown when JS adds 'active' class */
             }
 
             nav a {
@@ -416,7 +428,8 @@
                 flex-direction: column;
             }
 
-            .contact-form-card, .contact-info-card {
+            .contact-form-card,
+            .contact-info-card {
                 min-width: unset;
                 width: 100%;
             }
@@ -427,7 +440,8 @@
             }
 
             .form-row .form-group {
-                margin-bottom: 20px; /* Add back margin for stacked inputs */
+                margin-bottom: 20px;
+                /* Add back margin for stacked inputs */
             }
 
             .footer-content {
@@ -438,7 +452,8 @@
             .footer-section {
                 min-width: unset;
                 width: 100%;
-                text-align: left; /* Align footer sections left on mobile */
+                text-align: left;
+                /* Align footer sections left on mobile */
             }
 
             .footer-section:first-child {
@@ -457,32 +472,48 @@
 
         @media (min-width: 769px) {
             nav {
-                display: flex !important; /* Always visible on desktop */
+                display: flex !important;
+                /* Always visible on desktop */
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-left">
-            <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+
+                <!-- Curved F body -->
+                <path d="M7 4v14c0 2 3 2 3 0" />
+
+                <!-- F horizontal bars -->
+                <path d="M7 4h9" />
+                <path d="M7 10h6" />
+
+                <!-- Empowering dot (like head of figure) -->
+                <circle cx="17" cy="4" r="1.2" />
+            </svg>
+
             <span class="logo-text">Fingyaan Saathi</span>
         </div>
         <div class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </div>
-        <nav id="mainNav">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Courses</a>
-            <a href="#">Community</a>
-            <a href="#" class="active-nav">Contact</a>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="comunity.html">Courses</a>
+            <a href="comunity.html">Community</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <main>
         <h1 class="page-title">Let's Connect!</h1>
-        <p class="page-description">We'd love to hear from you. Reach out to us through the form below or using our direct contact information.</p>
+        <p class="page-description">We'd love to hear from you. Reach out to us through the form below or using our
+            direct contact information.</p>
 
         <div class="contact-content">
             <div class="contact-form-card">
@@ -504,7 +535,8 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+                        <textarea id="message" name="message" rows="5" placeholder="How can we help you?"
+                            required></textarea>
                     </div>
                     <button type="submit" class="primary-button">Send Message</button>
                 </form>
@@ -555,6 +587,20 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                    stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+
+                    <!-- Curved F body -->
+                    <path d="M7 4v14c0 2 3 2 3 0" />
+
+                    <!-- F horizontal bars -->
+                    <path d="M7 4h9" />
+                    <path d="M7 10h6" />
+
+                    <!-- Empowering dot (like head of figure) -->
+                    <circle cx="17" cy="4" r="1.2" />
+                </svg>
+
                 <h3>Fingyaan Saathi</h3>
                 <p class="footer-text">Empowering women through digital literacy.</p>
                 <div class="footer-social-icons">
@@ -599,18 +645,16 @@
         </div>
     </footer>
 
-    <div class="made-with-footer">
-        Made with <a href="#" class="vislly-link-footer">Vislly</a>
-    </div>
+
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // JavaScript for Hamburger Menu Toggle
             const menuToggle = document.getElementById('menuToggle');
             const mainNav = document.getElementById('mainNav');
 
             if (menuToggle && mainNav) {
-                menuToggle.addEventListener('click', function() {
+                menuToggle.addEventListener('click', function () {
                     mainNav.classList.toggle('active');
                 });
             }
@@ -619,7 +663,7 @@
             const contactForm = document.getElementById('contactForm');
 
             if (contactForm) {
-                contactForm.addEventListener('submit', function(event) {
+                contactForm.addEventListener('submit', function (event) {
                     event.preventDefault(); // Prevent default form submission
 
                     // In a real application, you would collect form data and send it to a server.
@@ -659,6 +703,5 @@
         });
     </script>
 </body>
+
 </html>
-
-
