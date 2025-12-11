@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,7 +129,8 @@
             text-align: center;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             color: var(--dark-blue);
             font-weight: 700;
             margin-bottom: 20px;
@@ -458,14 +460,16 @@
 
             nav {
                 width: 100%;
-                display: none; /* Hidden by default on mobile */
+                display: none;
+                /* Hidden by default on mobile */
                 flex-direction: column;
                 margin-top: 15px;
                 background-color: var(--white);
             }
 
             nav.active {
-                display: flex; /* Shown when JS adds 'active' class */
+                display: flex;
+                /* Shown when JS adds 'active' class */
             }
 
             nav a {
@@ -476,12 +480,14 @@
             }
 
             /* General mobile layout adjustments */
-            .about-hero-section, .impact-section {
+            .about-hero-section,
+            .impact-section {
                 flex-direction: column;
                 text-align: center;
             }
 
-            .about-hero-image, .impact-image {
+            .about-hero-image,
+            .impact-image {
                 min-width: unset;
                 max-width: 100%;
                 margin-top: 30px;
@@ -490,7 +496,7 @@
             .impact-section .impact-content {
                 order: -1;
             }
-            
+
             h1 {
                 font-size: 34px;
             }
@@ -499,7 +505,8 @@
                 font-size: 28px;
             }
 
-            .values-grid, .team-grid {
+            .values-grid,
+            .team-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -518,34 +525,50 @@
                 margin-top: 20px;
                 text-align: left;
             }
-            
+
             .primary-button {
                 width: 100%;
             }
         }
-        
+
         @media (min-width: 769px) {
             nav {
-                display: flex !important; /* Always visible on desktop */
+                display: flex !important;
+                /* Always visible on desktop */
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-left">
-            <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+
+                <!-- Curved F body -->
+                <path d="M7 4v14c0 2 3 2 3 0" />
+
+                <!-- F horizontal bars -->
+                <path d="M7 4h9" />
+                <path d="M7 10h6" />
+
+                <!-- Empowering dot (like head of figure) -->
+                <circle cx="17" cy="4" r="1.2" />
+            </svg>
+
             <span class="logo-text">Fingyaan Saathi</span>
         </div>
         <div class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </div>
-        <nav id="mainNav">
-            <a href="#">Home</a>
-            <a href="#" class="active-nav">About</a>
-            <a href="#">Courses</a>
-            <a href="#">Community</a>
-            <a href="#">Contact</a>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="comunity.html">Courses</a>
+            <a href="comunity.html">Community</a>
+            <a href="contact.html">Contact</a>
+        </nav>
         </nav>
     </header>
 
@@ -553,11 +576,13 @@
         <section class="about-hero-section">
             <div class="about-hero-content">
                 <h1>Empowering Women Through Digital Literacy</h1>
-                <p>At Fingyaan Saathi, we believe in unlocking every woman's potential by equipping them with essential digital skills. Our mission is to foster a community where women can confidently navigate the digital world, pursue new opportunities, and build a brighter future for themselves and others.</p>
+                <p>At Fingyaan Saathi, we believe in unlocking every woman's potential by equipping them with essential
+                    digital skills. Our mission is to foster a community where women can confidently navigate the
+                    digital world, pursue new opportunities, and build a brighter future for themselves and others.</p>
                 <button class="primary-button">Join Our Community</button>
             </div>
             <div class="about-hero-image">
-                <img src="https://via.placeholder.com/700x400?text=Women+Collaborating+on+Laptops" alt="Women collaborating on laptops">
+                <img src="img/IMG-20251117-WA0050-01.jpeg" alt="Women collaborating on laptops">
             </div>
         </section>
 
@@ -567,17 +592,41 @@
 
             <div class="values-grid">
                 <div class="value-item">
-                    <img src="https://via.placeholder.com/50" alt="Empowerment Icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v4" />
+                        <circle cx="12" cy="10" r="3" />
+                        <path d="M5 20c1-4 3-6 7-6s6 2 7 6" />
+                        <path d="M2 12l3 1 1-3" />
+                        <path d="M22 12l-3 1-1-3" />
+                    </svg>
+
                     <h3>Empowerment</h3>
                     <p>Fostering confidence and self-reliance in every woman through accessible digital education.</p>
                 </div>
                 <div class="value-item">
-                    <img src="https://via.placeholder.com/50" alt="Inclusivity Icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3.2" />
+                        <path d="M3 12a9 9 0 0 1 18 0 9 9 0 0 1-18 0" />
+                        <path d="M7 17.5c2-1 8-1 10 0" />
+                    </svg>
+
                     <h3>Inclusivity</h3>
-                    <p>Creating a welcoming and supportive learning environment for women of all backgrounds, ages, and goals.</p>
+                    <p>Creating a welcoming and supportive learning environment for women of all backgrounds, ages, and
+                        goals.</p>
                 </div>
                 <div class="value-item">
-                    <img src="https://via.placeholder.com/50" alt="Community Icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="6" cy="10" r="2.5" />
+                        <circle cx="12" cy="7" r="2.5" />
+                        <circle cx="18" cy="10" r="2.5" />
+                        <path d="M2 20c1-4 3-6 6-6" />
+                        <path d="M22 20c-1-4-3-6-6-6" />
+                        <path d="M8 20c1-3 3-4 4-4s3 1 4 4" />
+                    </svg>
+
                     <h3>Community</h3>
                     <p>Building a vibrant network where women can connect, collaborate, and grow together.</p>
                 </div>
@@ -586,18 +635,21 @@
 
         <section class="impact-section">
             <div class="impact-image">
-                <img src="https://via.placeholder.com/600x400?text=Woman+Working+on+Laptop" alt="Woman working on laptop">
+                <img src="img/lklk.jpeg" alt="Woman working on laptop">
             </div>
             <div class="impact-content">
                 <h2>Making a Real Impact</h2>
-                <p>Our programs are designed to equip women with practical, job-ready digital skills, from securing new jobs to starting their own digital ventures. We support every step of their journey, empowering them to reach new heights.</p>
+                <p>Our programs are designed to equip women with practical, job-ready digital skills, from securing new
+                    jobs to starting their own digital ventures. We support every step of their journey, empowering them
+                    to reach new heights.</p>
                 <button class="primary-button">Read Success Stories</button>
             </div>
         </section>
 
-        <section class="team-section">
+        <!-- <section class="team-section">
             <h2>Meet Our Dedicated Team</h2>
-            <p class="section-description">The passionate individuals driving our mission to empower women through digital literacy.</p>
+            <p class="section-description">The passionate individuals driving our mission to empower women through
+                digital literacy.</p>
 
             <div class="team-grid">
                 <div class="team-member-card">
@@ -631,7 +683,8 @@
                     </div>
                 </div>
                 <div class="team-member-card">
-                    <img src="https://via.placeholder.com/150x150?text=Smt.K" alt="Smt. Kavitha Devi" class="team-avatar">
+                    <img src="https://via.placeholder.com/150x150?text=Smt.K" alt="Smt. Kavitha Devi"
+                        class="team-avatar">
                     <h4>Smt. Kavitha Devi</h4>
                     <p class="team-title">Community Outreach Manager</p>
                     <p class="team-bio">Building strong partnerships and community engagement.</p>
@@ -641,13 +694,26 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
 
     <footer>
         <div class="footer-top">
             <div class="footer-left">
-                <img src="https://via.placeholder.com/20" alt="Fingyaan Saathi Logo" class="logo-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                    stroke="#FF7A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+
+                    <!-- Curved F body -->
+                    <path d="M7 4v14c0 2 3 2 3 0" />
+
+                    <!-- F horizontal bars -->
+                    <path d="M7 4h9" />
+                    <path d="M7 10h6" />
+
+                    <!-- Empowering dot (like head of figure) -->
+                    <circle cx="17" cy="4" r="1.2" />
+                </svg>
+
                 <span class="logo-text">Fingyaan Saathi</span>
                 <p class="footer-motto">Empowering women through digital literacy.</p>
                 <div class="social-icons">
@@ -688,20 +754,19 @@
         </div>
     </footer>
 
-    <div class="made-with">
-        Made with <a href="#" class="vislly-link-footer">Vislly</a>
-    </div>
+
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menuToggle');
             const mainNav = document.getElementById('mainNav');
 
             // Toggle the 'active' class on the navigation menu when the button is clicked
-            menuToggle.addEventListener('click', function() {
+            menuToggle.addEventListener('click', function () {
                 mainNav.classList.toggle('active');
             });
         });
     </script>
 </body>
+
 </html>
