@@ -1,46 +1,30 @@
 <?php
-
+session_start();
 require_once("config.php");
 
-// Initialize message
-$registration_message = "";
+$login_error = "";
 
-if(isset($_POST['register'])){
+if (isset($_POST['login'])) {
 
-    // filter data yang diinputkan
-    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-    
-    // Check if passwords match
-    if ($_POST["password"] !== $_POST["confirm_password"]) {
-        $registration_message = "<p style='color: red;'>Error: Passwords do not match.</p>";
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+    if ($email == "" || $password == "") {
+        $login_error = "All fields are required!";
     } else {
-        // enkripsi password
-        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // menyiapkan query (Using 'name' for both 'name' and 'username')
-        $sql = "INSERT INTO users (name, username, email, password) 
-                VALUES (:name, :username, :email, :password)";
-        $stmt = $db->prepare($sql);
+        if ($user && password_verify($password, $user['password'])) {
+            // Login success
+            $_SESSION['username'] = $user['username'];
+            header("Location: home.html");
+            exit;
 
-        // bind parameter ke query
-        $params = array(
-            ":name" => $name,
-            ":username" => $name, // Using 'name' for 'username'
-            ":password" => $password,
-            ":email" => $email
-        );
-
-        // eksekusi query untuk menyimpan ke database
-        $saved = $stmt->execute($params);
-
-        // jika query simpan berhasil, maka user sudah terdaftar
-        if($saved) {
-             header("Location: login.php");
-             exit; // Always exit after a header redirect
         } else {
-            // Handle save failure
-            $registration_message = "<p style='color: red;'>Error: Registration failed. Please try again.</p>";
+            $login_error = "Invalid Email or Password!";
         }
     }
 }
@@ -48,13 +32,13 @@ if(isset($_POST['register'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Log In</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <style>
         /* CSS STYLES (Provided in original response) */
         :root {
@@ -317,12 +301,14 @@ if(isset($_POST['register'])){
             margin-right: 4px;
             vertical-align: middle;
         }
+
         .vislly-link {
             color: #5527a0;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
         }
+
         .copyright p:first-child {
             font-size: 12px;
         }
@@ -367,6 +353,7 @@ if(isset($_POST['register'])){
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -380,32 +367,30 @@ if(isset($_POST['register'])){
     <main>
         <div class="card-container">
             <div class="card">
-                <h2>Create an Account</h2>
-                <p class="subtitle">Enter your details to join Women in Digital.</p>
-                
-                <?php echo $registration_message; ?>
+                <h2>Log In to Women in Digital</h2>
+                <p class="subtitle">Welcome back! Enter your credentials to access your account.</p>
 
-                <form action="" method="POST">
-                    
+                <div style="text-align: center;">
+                    <?php if (!empty($login_error)) echo "<p style='color: red; margin-bottom: 15px;'>$login_error</p>"; ?>
+                </div>
+
+                <form action="login.php" method="POST">
+
                     <div class="form-group">
-                        <label for="reg-name">Name</label>
-                        <input type="text" id="reg-name" name="name" placeholder="Your Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-email">Email</label>
-                        <input type="email" id="reg-email" name="email" placeholder="email@example.com" required>
-                    </div>
+                        <label for="reg-username">Email</label>
+<input type="text" id="reg-username" name="email" placeholder="Enter your email" required>
+
+                        <!-- <label for="reg-username">Username or Email</label>
+                        <input type="text" id="reg-username" name="username" placeholder="Username or email" required>
+                    </div> --></div>
                     <div class="form-group">
                         <label for="reg-password">Password</label>
                         <input type="password" id="reg-password" name="password" placeholder="**********" required>
                     </div>
-                    <div class="form-group">
-                        <label for="reg-confirm-password">Confirm Password</label>
-                        <input type="password" id="reg-confirm-password" name="confirm_password" placeholder="**********" required>
-                    </div>
-                    
-                    <button type="submit" class="primary-button" name="register">Register</button>
-                    <p class="account-link">Already have an account? <a href="login.php">Log in</a></p>
+
+                    <button type="submit" class="primary-button" name="login">Log In</button>
+                    <p class="account-link">Forgot password? <a href="#">Click here</a></p>
+                    <p class="account-link">Don't have an account? <a href="register.php">Create an account</a></p>
                 </form>
             </div>
         </div>
@@ -462,4 +447,5 @@ if(isset($_POST['register'])){
         </div>
     </footer>
 </body>
+
 </html>
