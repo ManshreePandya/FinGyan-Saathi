@@ -1,63 +1,61 @@
-<?php 
-
+<?php
+session_start();
 require_once("config.php");
 
-// Initialize an error variable
-$login_error = ""; 
+$register_error = "";
+$register_success = "";
 
-if(isset($_POST['login'])){
+if (isset($_POST['register'])) {
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
-    // The PHP logic for processing the form data
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING); // Matches the HTML input name="username"
-    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-
-    // Query to check if the input matches either the username or the email
-    $sql = "SELECT * FROM users WHERE username=:username OR email=:email";
-    $stmt = $db->prepare($sql);
-    
-    // bind parameter ke query (binding the single input to both checks)
-    $params = array(
-        ":username" => $username,
-        ":email" => $username
-    );
-
-    $stmt->execute($params);
-
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // jika user terdaftar
-    if($user){
-        // verifikasi password
-        if(password_verify($password, $user["password"])){
-            // buat Session
-            session_start();
-            $_SESSION["user"] = $user;
-            // login sukses, alihkan ke halaman timeline
-            header("Location: timeline.php");
-            exit; // Stop further execution
-        } else {
-            // Password incorrect
-            $login_error = "Invalid username/email or password.";
-        }
+    if ($username == "" || $email == "" || $password == "") {
+        $register_error = "All fields are required!";
     } else {
-        // User not found
-        $login_error = "Invalid username/email or password.";
+
+        // 🔥 CHECK BOTH USERNAME & EMAIL
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email OR username = :username");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $existing = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($existing['email'] === $email) {
+                $register_error = "Email already registered!";
+            } elseif ($existing['username'] === $username) {
+                $register_error = "Username already taken!";
+            }
+        } else {
+            // Insert new user
+            $hashPass = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (:u, :e, :p)");
+            $stmt->bindParam(':u', $username);
+            $stmt->bindParam(':e', $email);
+            $stmt->bindParam(':p', $hashPass);
+
+            if ($stmt->execute()) {
+                $_SESSION['username'] = $username;
+                header("Location: home.html");
+                exit;
+            } else {
+                $register_error = "Registration failed!";
+            }
+        }
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* CSS STYLES (Provided in original response) */
-        :root {
+<meta charset="UTF-8">
+<title>Register</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+:root {
             --primary-color: #ff8c42;
             --text-color: #333;
             --light-text-color: #666;
@@ -317,12 +315,14 @@ if(isset($_POST['login'])){
             margin-right: 4px;
             vertical-align: middle;
         }
+
         .vislly-link {
             color: #5527a0;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
         }
+
         .copyright p:first-child {
             font-size: 12px;
         }
@@ -365,96 +365,53 @@ if(isset($_POST['login'])){
                 margin-top: 5px;
             }
         }
-    </style>
+    
+</style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <a href="index.php" class="nav-link">Home</a>
-            <a href="#" class="nav-link">Community</a>
-            <a href="login.php" class="nav-link">Log In</a>
-            <a href="register.php" class="nav-button primary-nav-button">Register</a>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <a href="index.php" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Community</a>
+        <a href="login.php" class="nav-link">Log In</a>
+        <a href="register.php" class="nav-button primary-nav-button">Register</a>
+    </nav>
+</header>
 
-    <main>
-        <div class="card-container">
-            <div class="card">
-                <h2>Log In to Women in Digital</h2>
-                <p class="subtitle">Welcome back! Enter your credentials to access your account.</p>
+<main>
+    <div class="card-container">
+        <div class="card">
+            <h2>Create an Account</h2>
+            <p class="subtitle">Join the Women in Digital community.</p>
 
-                <div style="text-align: center;">
-                    <?php if (!empty($login_error)) echo "<p style='color: red; margin-bottom: 15px;'>$login_error</p>"; ?>
+            <?php 
+                if (!empty($register_error)) echo "<p style='color: red;'>$register_error</p>"; 
+            ?>
+
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" required placeholder="Choose a username">
                 </div>
-                
-                <form action="login.php" method="POST">
-                    
-                    <div class="form-group">
-                        <label for="reg-username">Username or Email</label>
-                        <input type="text" id="reg-username" name="username" placeholder="Username or email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reg-password">Password</label>
-                        <input type="password" id="reg-password" name="password" placeholder="**********" required>
-                    </div>
-                    
-                    <button type="submit" class="primary-button" name="login">Log In</button>
-                    <p class="account-link">Forgot password? <a href="#">Click here</a></p>
-                    <p class="account-link">Don't have an account? <a href="register.php">Create an account</a></p>
-                </form>
-            </div>
-        </div>
-    </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section motto">
-                <h3>Empowering women through digital literacy.</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" required placeholder="Email">
                 </div>
-            </div>
-            <div class="footer-section">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="#">Digital Literacy</a></li>
-                    <li><a href="#">Workshops</a></li>
-                    <li><a href="#">Articles</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-section newsletter">
-                <h3>Join Our Newsletter</h3>
-                <p>Stay updated with our latest resources and events.</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="Your email address">
-                    <button class="secondary-button">Subscribe &gt;</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="copyright">
-            <p>&copy; 2025 Women in Digital. All rights reserved.</p>
-            <p>Made with <a href="#" class="vislly-link">Vislly</a></p>
+                <div class="form-group">
+                    <label for="password">Create password</label>
+                    <input type="password" name="password" required placeholder="********">
+                </div>
+
+                <button type="submit" class="primary-button" name="register">Register</button>
+
+                <p class="account-link">Already have an account? <a href="login.php">Log in</a></p>
+            </form>
         </div>
-    </footer>
+    </div>
+</main>
+
 </body>
 </html>
